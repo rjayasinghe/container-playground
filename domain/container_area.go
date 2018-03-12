@@ -28,7 +28,7 @@ func retryLater(requestContainerSpace chan string, stackerName string) {
 	requestContainerSpace <- stackerName
 }
 
-func (containerArea *ContainerArea) startWork(
+func (containerArea *ContainerArea) StartWork(
 	requestContainerSpace chan string, containerAreaClearance chan<- bool,
 	containerToContainerArea <-chan *FreightContainer) {
 	for {

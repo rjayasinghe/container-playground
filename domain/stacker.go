@@ -11,10 +11,12 @@ type Stacker struct {
 	isFree          bool
 }
 
-func (stacker *Stacker) startWork(containerToStacker <-chan *FreightContainer,
+func (stacker *Stacker) StartWork(containerToStacker <-chan *FreightContainer,
 	rejectedContainer chan<- *FreightContainer, containerToContainerArea chan *FreightContainer,
 		requestContainerSpace chan<- string, containerAreaClearance <-chan bool) error {
 
+	stacker.isFree = true
+	log.Println(fmt.Sprintf("stacker %s is waiting for work", stacker.Name) )
 	for {
 		select {
 			case freightContainer := <- containerToStacker:
